@@ -1,11 +1,11 @@
 #include <wasm.h>
 
-	int length;
-	f32 square(float a)
-	{
-		return a * a;
-	}
-	/*
+f32 export square(float a)
+{
+	return a * a;
+}
+
+/*
 	const float *setup(int length) {
 		array = float[length];
 		return array;

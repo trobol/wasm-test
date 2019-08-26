@@ -3,10 +3,8 @@ source_filename = "main.c"
 target datalayout = "e-m:e-p:32:32-i64:64-n32:64-S128"
 target triple = "wasm32"
 
-@length = hidden global i32 0, align 4
-
 ; Function Attrs: noinline nounwind optnone
-define hidden float @square(float) #0 {
+define float @square(float) #0 {
   %2 = alloca float, align 4
   store float %0, float* %2, align 4
   %3 = load float, float* %2, align 4
