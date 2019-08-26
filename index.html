@@ -4,22 +4,20 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Page Title</title>
+	<title>WASM Test</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script type="module">
 		async function init() {
 			const { instance } = await WebAssembly.instantiateStreaming(
 				fetch("./main.wasm")
 			);
-			console.log(instance.exports.square(2));
+			if(instance.exports.square) {
+				document.body.innerHTML = "<h1>WASM Compiled</h1>";
+			}
 		}
 		init();	
 	</script>
-	<script src="main.js"></script>
 </head>
-
 <body>
-	
 </body>
-
 </html>

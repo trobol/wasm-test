@@ -1,19 +1,14 @@
-#include <wasm.h>
+#ifndef __GNUC__
+#define __attribute__(x)
+#endif
+#ifdef __cplusplus
+#define export __attribute__((visibility("default"))) extern "C"
+#else
+#define export __attribute__((visibility("default")))
+#endif
 
-f32 export square(float a)
+
+float export square(float a)
 {
 	return a * a;
 }
-
-/*
-	const float *setup(int length) {
-		array = float[length];
-		return array;
-	}
-
-	void test() {
-		for(int i = 0; i < length; i++) {
-			
-		}
-	}
-	*/

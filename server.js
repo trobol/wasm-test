@@ -24,6 +24,26 @@ const mimeType = {
 	'.wasm':'application/wasm'
 };
 
+const { exec } = require('child_process');
+
+console.log('Building wasm')
+exec('bash -c "clang --target=wasm32 -O3 -flto -nostdlib -Wl,--no-gc-sections -Wl,--no-entry -Wl,--export-dynamic -Wl,--lto-O3  -o main.wasm main.c "', (err, stdout, stderr) => {
+	if (err) {
+		// node couldn't execute the command
+		return;
+	}
+
+	// the *entire* stdout and stderr (buffered)
+	if (stdout)
+		console.log(`stdout: ${stdout}`);
+	if(stderr) 
+		console.log(`Error: ${stderr}`);
+	
+	
+	createServer();
+});
+
+function createServer() {
 http.createServer(function (req, res) {
 	console.log(`${req.method} ${req.url}`);
 
@@ -67,5 +87,5 @@ http.createServer(function (req, res) {
 
 
 }).listen(parseInt(port));
-
-console.log(`Server listening on port ${port}`);
+	console.log(`Server listening on port ${port}`);
+}
