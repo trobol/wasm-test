@@ -20,7 +20,8 @@ const mimeType = {
 	'.pdf': 'application/pdf',
 	'.doc': 'application/msword',
 	'.eot': 'appliaction/vnd.ms-fontobject',
-	'.ttf': 'aplication/font-sfnt'
+	'.ttf': 'aplication/font-sfnt',
+	'.wasm':'application/wasm'
 };
 
 http.createServer(function (req, res) {

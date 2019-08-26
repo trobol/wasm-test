@@ -6,11 +6,20 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Page Title</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="module">
+		async function init() {
+			const { instance } = await WebAssembly.instantiateStreaming(
+				fetch("./main.wasm")
+			);
+			console.log(instance.exports.square(2));
+		}
+		init();	
+	</script>
 	<script src="main.js"></script>
 </head>
 
 <body>
-
+	
 </body>
 
 </html>
